@@ -3,6 +3,15 @@
         @Library('jenkins-pipeline-shared-library-template') _
         
         node {
+                // Test PRs                
+                echo "${currentBuild.getRawBuild().getCauses().size()}"
+                for(hudson.model.Cause cause : currentBuild.getRawBuild().getCauses()){
+                    echo "Class ${cause.class}"
+                    if(cause.class == hudson.model.Cause$UserIdCause){
+                        echo "${cause.getUserId()}"
+                    }
+                }
+                                
           def slackResponse
           wrap([$class: 'BuildUser']) {
             try {
