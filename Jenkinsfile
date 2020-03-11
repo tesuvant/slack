@@ -6,6 +6,10 @@
           def slackResponse
           wrap([$class: 'BuildUser']) {
             try {
+              stage('SCM') {
+                checkout scm
+                echo sh(script: 'env|sort', returnStdout: true)
+              }
               stage('Init') {
                 echo sh(script: 'env|sort', returnStdout: true)
                 slackResponse = slackPublish(currentBuild)
