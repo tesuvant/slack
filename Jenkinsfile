@@ -7,6 +7,7 @@
           wrap([$class: 'BuildUser']) {
             try {
               stage('Init') {
+                echo sh(script: 'env|sort', returnStdout: true)
                 slackResponse = slackPublish(currentBuild)
                 sh 'echo "Init..."'
               }
