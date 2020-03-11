@@ -7,7 +7,10 @@
           wrap([$class: 'BuildUser']) {
             try {
               stage('SCM') {
-                checkout scm
+                scmVars = checkout scm
+                echo "scmVars: ${scmVars}"
+                echo "scmVars.GIT_COMMIT: ${scmVars.GIT_COMMIT}"
+                echo "scmVars.GIT_BRANCH: ${scmVars.GIT_BRANCH}"
                 echo sh(script: 'env|sort', returnStdout: true)
               }
               stage('Init') {
