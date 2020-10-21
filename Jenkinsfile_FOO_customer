@@ -1,6 +1,6 @@
 @Library('jenkins-shared-library') _
 
 // Note: The next line is controlled by Jenkins. Please do not edit by hand.
-def infra_version="v0.0.2"
+def infra_version="v0.0.3"
 
 deploy(["infraVersion": infra_version, "slave": "blah"])
